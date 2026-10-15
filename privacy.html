@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>隐私政策 - 良心云</title>
+  <meta name="description" content="良心云极客节点门户严格执行零活动日志保留政策，全方位保护用户个人隐私与数据安全。">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="polar-navbar">
+    <div class="polar-ice-trim"></div>
+    <div class="polar-nav-wrap">
+      <a href="index.html" class="polar-logo-group">
+        <svg class="polar-logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="iceHeartGradPrv" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#ffffff" />
+              <stop offset="50%" stop-color="#80ced6" />
+              <stop offset="100%" stop-color="#38a3a5" />
+            </linearGradient>
+            <linearGradient id="facetDeepGradPrv" x1="100%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#1c5264" />
+              <stop offset="100%" stop-color="#0e2832" />
+            </linearGradient>
+          </defs>
+          <polygon points="50,28 32,15 16,32 30,52 50,28" fill="url(#facetDeepGradPrv)" stroke="#80ced6" stroke-width="1.5" />
+          <polygon points="50,28 68,15 84,32 70,52 50,28" fill="url(#facetDeepGradPrv)" stroke="#80ced6" stroke-width="1.5" />
+          <polygon points="30,52 50,28 70,52 50,86 30,52" fill="url(#iceHeartGradPrv)" stroke="#ffffff" stroke-width="1.5" />
+          <circle cx="50" cy="46" r="4" fill="#ffffff" />
+        </svg>
+        <div class="polar-brand-text">
+          <span class="polar-title">良心云</span>
+          <span class="polar-tagline">坚若磐石 · 澄澈透明</span>
+        </div>
+      </a>
+
+      <!-- 导航菜单：包含所有板块标题 -->
+      <!-- 纯CSS响应式移动端导航开关 -->
+      <input type="checkbox" id="polarNavToggle" class="mobile-nav-input" aria-label="切换移动端导航">
+
+      <nav class="polar-nav-menu">
+        <ul class="polar-nav-list">
+          <li><a href="index.html#network-power" class="polar-nav-link">互联硬实力</a></li>
+          <li><a href="index.html#stream-ai" class="polar-nav-link">流媒体与AI</a></li>
+          <li><a href="index.html#spec-pricing" class="polar-nav-link">规格评测选型</a></li>
+          <li><a href="index.html#troubleshooting" class="polar-nav-link">疑难排查</a></li>
+          <li><a href="index.html#reports" class="polar-nav-link">先锋实测报告</a></li>
+          <li><a href="journal.html" class="polar-nav-link">极客专栏</a></li>
+        </ul>
+      </nav>
+
+      <!-- 1个核心 CTA 按钮 -->
+      <div class="polar-nav-right">
+        <a href="https://ww012.twilightaff.com/#/?code=A56DH1Af" target="_blank" rel="nofollow" class="btn-polar btn-polar-primary btn-polar-sm">
+          开通节点
+        </a>
+              <label for="polarNavToggle" class="mobile-nav-toggle-btn" aria-label="打开/关闭导航菜单">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <main class="polar-layout polar-subpage-wrap">
+    <a href="index.html" class="polar-back-link">&larr; 返回门户首页</a>
+    <div class="polar-sub-header">
+      <h1 class="polar-sub-title">隐私政策</h1>
+      <p class="polar-sub-desc">严格践行“绝无妥协”的零活动日志政策，捍卫每一位用户的数字主权</p>
+    </div>
+
+    <div class="polar-sub-content">
+      <h2>核心原则：绝不保留任何用户网络活动日志（No-Logs）</h2>
+      <p>
+        良心云在网络工程设计之初，就确立了<strong>“绝不保留、绝不记录、绝不窥探”</strong>的严密零日志准则。我们绝不在任何专线中继节点、网关边缘或中转服务器上持久化保留用户的任何网络足迹。
+      </p>
+      <p>我们明确承诺绝不记录下列敏感信息：</p>
+      <ul>
+        <li>您所浏览的具体目标 URL、IP、HTTP 请求头或网页历史记录；</li>
+        <li>您传输的任何实际数据载荷（Payload）、文件下载内容或语音视频流；</li>
+        <li>您的真实物理公网 IP 地址或客户端设备硬件唯一标识码；</li>
+        <li>您的 DNS 解析历史记录（全节点运行自建纯内存无污染递归解析，解析即焚）。</li>
+      </ul>
+
+      <h2>RAM 纯内存无盘瞬态架构</h2>
+      <p>
+        为杜绝任何物理层面的存储风险，良心云的所有边缘专线集群均部署为无盘 RAM 纯内存微系统。操作系统及路由核心全流程运行在易失性内存中，一旦发生物理服务器重启、硬件拔除或异常断电，内存数据将在物理学层面瞬间彻底湮灭，不留下任何磁盘镜像或可恢复数据。
+      </p>
+
+      <h2>仅保留的最小化计费管理参数</h2>
+      <p>
+        为保障账户生命周期管理与并发设备防滥用，系统仅在隔离的主数据库中留存下列最基本的必要字段：
+      </p>
+      <ul>
+        <li>注册账户所填写的电子邮箱（仅用于账号登录身份验证与重要安全通知）；</li>
+        <li>当前账单周期的流量累计消耗总量（仅为字节加总统计，绝无任何访问目标记录）；</li>
+        <li>当前实时并发连接数（仅用于判断设备数是否超额，会话结束即刻释放销毁）。</li>
+      </ul>
+
+      <h2>前向保密与多态高强度加密</h2>
+      <p>
+        用户客户端与各节点之间的握手通信均采用高强度现代密码套件，支持 Perfect Forward Secrecy（PFS 完美前向保密）。即便任一会话阶段的密钥在未来遭受不可预测的妥协，历史通信数据依然在数学层面具备不可破解性。
+      </p>
+    </div>
+  </main>
+
+  <footer class="polar-footer">
+    <div class="polar-layout">
+      <ul class="polar-footer-list">
+        <li><a href="sitemap.html">网站地图</a></li>
+        <li><a href="about.html">关于我们</a></li>
+        <li><a href="terms.html">服务条款</a></li>
+        <li><a href="privacy.html">隐私政策</a></li>
+      </ul>
+      <div class="polar-copy">
+        &copy; 2026 良心云 (Liangxingyun.top). 保留所有权利。
+      </div>
+    </div>
+  </footer>
+  <!-- 移动端导航点击后自动收起微脚本 (原生无依赖) -->
+  <script>
+    document.querySelectorAll('.polar-nav-link').forEach(function(l) {
+      l.addEventListener('click', function() {
+        var t = document.getElementById('polarNavToggle');
+        if (t) t.checked = false;
+      });
+    });
+  </script>
+</body>
+</html>

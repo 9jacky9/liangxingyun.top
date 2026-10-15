@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>下一代通用代理内核Sing-box实战：规则集路由与极简配置迁移 - 极客专栏</title>
+  <meta name="description" content="深入拆解通用代理平台Sing-box的核心架构优势。演示二进制规则集编译优化、多路复用Mux吞吐与Clash老旧配置平滑迁移全指南。">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- 顶部寒晶导航 -->
+  <header class="polar-navbar">
+    <div class="polar-ice-trim"></div>
+    <div class="polar-nav-wrap">
+      <a href="index.html" class="polar-logo-group" title="良心云极客节点门户">
+        <svg class="polar-logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="iceHeartGradArt6" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#ffffff" />
+              <stop offset="50%" stop-color="#80ced6" />
+              <stop offset="100%" stop-color="#38a3a5" />
+            </linearGradient>
+            <linearGradient id="facetDeepGradArt6" x1="100%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#1c5264" />
+              <stop offset="100%" stop-color="#0e2832" />
+            </linearGradient>
+          </defs>
+          <polygon points="50,28 32,15 16,32 30,52 50,28" fill="url(#facetDeepGradArt6)" stroke="#80ced6" stroke-width="1.5" />
+          <polygon points="50,28 68,15 84,32 70,52 50,28" fill="url(#facetDeepGradArt6)" stroke="#80ced6" stroke-width="1.5" />
+          <polygon points="30,52 50,28 70,52 50,86 30,52" fill="url(#iceHeartGradArt6)" stroke="#ffffff" stroke-width="1.5" />
+          <circle cx="50" cy="46" r="4" fill="#ffffff" />
+        </svg>
+        <div class="polar-brand-text">
+          <span class="polar-title">良心云</span>
+          <span class="polar-tagline">坚若磐石 · 澄澈透明</span>
+        </div>
+      </a>
+      <!-- 纯CSS响应式移动端导航开关 -->
+      <input type="checkbox" id="polarNavToggle" class="mobile-nav-input" aria-label="切换移动端导航">
+
+      <nav class="polar-nav-menu">
+        <ul class="polar-nav-list">
+          <li><a href="index.html#network-power" class="polar-nav-link">互联硬实力</a></li>
+          <li><a href="index.html#stream-ai" class="polar-nav-link">流媒体与AI</a></li>
+          <li><a href="index.html#spec-pricing" class="polar-nav-link">规格评测选型</a></li>
+          <li><a href="index.html#troubleshooting" class="polar-nav-link">疑难排查</a></li>
+          <li><a href="index.html#reports" class="polar-nav-link">先锋实测报告</a></li>
+          <li><a href="journal.html" class="polar-nav-link active">极客专栏</a></li>
+        </ul>
+      </nav>
+      <div class="polar-nav-right">
+        <a href="https://ww012.twilightaff.com/#/?code=A56DH1Af" target="_blank" rel="nofollow" class="btn-polar btn-polar-primary btn-polar-sm">
+          开通节点
+        </a>
+              <label for="polarNavToggle" class="mobile-nav-toggle-btn" aria-label="打开/关闭导航菜单">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <!-- 文章正文区域 -->
+  <main class="polar-layout">
+    <div class="polar-article-wrap">
+      <nav class="polar-breadcrumb">
+        <a href="index.html">门户首页</a> &gt; <a href="journal.html">极客专栏</a> &gt; <span>内核演进</span>
+      </nav>
+
+      <header class="polar-article-header">
+        <h1 class="polar-article-title">下一代通用代理内核Sing-box实战：规则集路由与极简配置迁移</h1>
+        <div class="polar-article-meta">
+          <span>发布时间：2026-10-09</span>
+          <span>作者：开源网络协议组</span>
+          <span>分类：内核演进</span>
+          <span>阅读时长：约 6 分钟 (1130字)</span>
+        </div>
+      </header>
+
+      <article class="polar-article-body">
+        <p>
+          在开源网络代理生态演进的历史长河中，从 Shadowsocks、V2Ray 到近年的 Clash，每一次架构更迭都伴随着性能效率与灵活性的大幅飞跃。而在当前阶段，由 SagerNet 团队完全自研的新一代通用代理平台 <strong>Sing-box</strong>，凭借用 Go 语言极致优化的极低内存占用、对全部前沿协议的原生支持，正迅速成为极客玩家与系统运维眼中的终极瑞士军刀。
+        </p>
+
+        <h2>一、Sing-box相比老旧架构的核心技术优势</h2>
+        <p>
+          与依赖臃肿抽象层的传统客户端相比，Sing-box 在底层设计上展现出极度克制而高效的工程审美：
+        </p>
+        <h3>1. 内存占用立减 60% 的轻量化微内核</h3>
+        <p>
+          即使加载数十万条规则的大型订阅，Sing-box 的常驻内存（RSS）通常也仅需 30MB 至 50MB，相比动辄占用 200MB 以上的传统软件，非常适合在软路由、树莓派等内存受限的微型设备上长期静默挂机。
+        </p>
+        <h3>2. 原生二进制规则集（Rule-Set SRS）</h3>
+        <p>
+          Sing-box 彻底抛弃了解析缓慢的明文 YAML 规则，创造性地引入了预编译的 `.srs` 二进制规则集。在应用冷启动与规则匹配查询时，其性能达到了传统文本匹配的 10 倍以上，彻底消除了复杂分流下的 CPU 瞬时高负载。
+        </p>
+
+        <h2>二、核心配置结构与规则集路由实战</h2>
+        <p>
+          Sing-box 采用纯粹而标准化的 JSON 语法规范组织其核心逻辑模块：
+        </p>
+        <h3>1. Inbounds 入站与 Outbounds 出站解耦</h3>
+        <p>
+          入站模块推荐配置纯纯的 `tun` 模式，开启 `auto_route: true` 与 `strict_route: true`，实现对全系统所有进程流量的零泄漏接管。出站模块则灵活组合直连（direct）、阻断（block）与目标专线节点。
+        </p>
+        <h3>2. 路由规则链（Route Rules）的设计</h3>
+        <p>
+          通过声明 remote 类型的 rule-set 规则源，客户端会在后台自动增量更新最新的分流指纹。例如针对海外高频流媒体与大模型 API，直接分流至专享的优质住宅专线。关于各主力客户端内核在不同平台上的性能与协议兼容横评，可查阅 <a href="https://tizilab.net/" target="_blank">稳定防封梯子服务深度横评</a> 中的详细基准跑分。
+        </p>
+
+        <h2>三、多路复用（Mux）性能调优</h2>
+        <p>
+          在面对海量高并发小文件请求（如网页一次性加载上百张小缩略图）时，频繁的 TCP 三次握手和 TLS 证书协商会导致严重的延迟累加。Sing-box 内置了高效的 <strong>h2mux / smux</strong> 协议，能够将多条逻辑 TCP 数据流复用在单条物理长连接管道内并行传输，将页面整体首屏渲染时间缩减 40% 以上。
+        </p>
+
+        <div class="polar-article-callout">
+          <strong>良心云原生生态支持：</strong>良心云全线节点不仅支持传统 Clash 配置，更完整提供 Sing-box 1.9+ 最新语法的标准订阅格式，原生集成二进制 `.srs` 规则源与优选物理专线链路，免去高级用户繁琐的代码转译困扰。
+        </div>
+
+        <div class="polar-article-cta">
+          <h3>一键畅享 Sing-box 下一代极客加速体验</h3>
+          <p>良心云标准 JSON 订阅一键导入，超低资源占用，体验极致流畅的规则分流</p>
+          <a href="https://ww012.twilightaff.com/#/?code=A56DH1Af" target="_blank" rel="nofollow" class="btn-polar btn-polar-primary">
+            立即开通良心云
+          </a>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <!-- 页脚 -->
+  <footer class="polar-footer">
+    <div class="polar-layout">
+      <ul class="polar-footer-list">
+        <li><a href="sitemap.html">网站地图</a></li>
+        <li><a href="about.html">关于我们</a></li>
+        <li><a href="terms.html">服务条款</a></li>
+        <li><a href="privacy.html">隐私政策</a></li>
+      </ul>
+      <div class="polar-copy">
+        &copy; 2026 良心云 (Liangxingyun.top). 保留所有权利。
+      </div>
+    </div>
+  </footer>
+  <!-- 移动端导航点击后自动收起微脚本 (原生无依赖) -->
+  <script>
+    document.querySelectorAll('.polar-nav-link').forEach(function(l) {
+      l.addEventListener('click', function() {
+        var t = document.getElementById('polarNavToggle');
+        if (t) t.checked = false;
+      });
+    });
+  </script>
+</body>
+</html>

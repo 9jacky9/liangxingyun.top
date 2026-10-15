@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>极客专栏 - 分布式网络协议与微内核架构研报 | 良心云</title>
+  <meta name="description" content="良心云极客专栏，专注于只读RAM无盘网关架构剖析、学术科研与大模型开源权重传输加速、跨洋高丢包链路BBR/QUIC调优、DoH加密与Sing-box内核配置实践。">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- 顶部寒晶导航 -->
+  <header class="polar-navbar">
+    <div class="polar-ice-trim"></div>
+    <div class="polar-nav-wrap">
+      <a href="index.html" class="polar-logo-group" title="良心云极客节点门户">
+        <svg class="polar-logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="iceHeartGradJrnl" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#ffffff" />
+              <stop offset="50%" stop-color="#80ced6" />
+              <stop offset="100%" stop-color="#38a3a5" />
+            </linearGradient>
+            <linearGradient id="facetDeepGradJrnl" x1="100%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#1c5264" />
+              <stop offset="100%" stop-color="#0e2832" />
+            </linearGradient>
+          </defs>
+          <polygon points="50,28 32,15 16,32 30,52 50,28" fill="url(#facetDeepGradJrnl)" stroke="#80ced6" stroke-width="1.5" />
+          <polygon points="50,28 68,15 84,32 70,52 50,28" fill="url(#facetDeepGradJrnl)" stroke="#80ced6" stroke-width="1.5" />
+          <polygon points="30,52 50,28 70,52 50,86 30,52" fill="url(#iceHeartGradJrnl)" stroke="#ffffff" stroke-width="1.5" />
+          <circle cx="50" cy="46" r="4" fill="#ffffff" />
+        </svg>
+        <div class="polar-brand-text">
+          <span class="polar-title">良心云</span>
+          <span class="polar-tagline">坚若磐石 · 澄澈透明</span>
+        </div>
+      </a>
+
+      <!-- 导航菜单：包含所有板块标题 + 极客专栏 -->
+      <!-- 纯CSS响应式移动端导航开关 -->
+      <input type="checkbox" id="polarNavToggle" class="mobile-nav-input" aria-label="切换移动端导航">
+
+      <nav class="polar-nav-menu">
+        <ul class="polar-nav-list">
+          <li><a href="index.html#network-power" class="polar-nav-link">互联硬实力</a></li>
+          <li><a href="index.html#stream-ai" class="polar-nav-link">流媒体与AI</a></li>
+          <li><a href="index.html#spec-pricing" class="polar-nav-link">规格评测选型</a></li>
+          <li><a href="index.html#troubleshooting" class="polar-nav-link">疑难排查</a></li>
+          <li><a href="index.html#reports" class="polar-nav-link">先锋实测报告</a></li>
+          <li><a href="journal.html" class="polar-nav-link active">极客专栏</a></li>
+        </ul>
+      </nav>
+
+      <div class="polar-nav-right">
+        <a href="https://ww012.twilightaff.com/#/?code=A56DH1Af" target="_blank" rel="nofollow" class="btn-polar btn-polar-primary btn-polar-sm">
+          开通节点
+        </a>
+              <label for="polarNavToggle" class="mobile-nav-toggle-btn" aria-label="打开/关闭导航菜单">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <!-- 页面主体 -->
+  <main class="polar-layout polar-subpage-wrap">
+    <a href="index.html" class="polar-back-link">&larr; 返回门户首页</a>
+
+    <div class="polar-sub-header">
+      <h1 class="polar-sub-title">极客专栏</h1>
+      <p class="polar-sub-desc">深入硬核网络通信底层，探索零日志内存网关、协议调优与开源工程实践</p>
+    </div>
+
+    <!-- 资讯卡片网格 -->
+    <div class="journal-hub-grid">
+
+      <!-- 文章 1：良心云架构深度拆解 -->
+      <article class="journal-card">
+        <div class="journal-card-header">
+          <span class="journal-badge">架构深度拆解</span>
+          <time class="journal-date" datetime="2026-10-14">2026-10-14</time>
+        </div>
+        <h2 class="journal-card-title">
+          <a href="diskless-ram-gateway-review.html">硬件级零日志与极夜时延：极客眼中的良心云架构深度拆解</a>
+        </h2>
+        <p class="journal-card-excerpt">
+          从底层纯内存只读运行机制、无持久化存储设计到点对点物理 IPLC 骨干拓扑，深度剖析良心云如何兼顾极夜般深邃的冷澈时延与极致的物理级数据安全。
+        </p>
+        <div class="journal-card-footer">
+          <span class="journal-read-time">用时约 6 分钟 · 1160 字</span>
+          <a href="diskless-ram-gateway-review.html" class="journal-link-btn">阅读全文 &rarr;</a>
+        </div>
+      </article>
+
+      <!-- 文章 2：内存无盘系统安全边界 -->
+      <article class="journal-card">
+        <div class="journal-card-header">
+          <span class="journal-badge">系统安全</span>
+          <time class="journal-date" datetime="2026-10-13">2026-10-13</time>
+        </div>
+        <h2 class="journal-card-title">
+          <a href="ram-only-privacy-architecture.html">真正的零数据残留：只读RAM内存运行与传统云服务器安全边界</a>
+        </h2>
+        <p class="journal-card-excerpt">
+          传统 VPS 硬盘写入抹除策略真的安全吗？本文从取证科学视角，详细论述只读 RAM 微内核冷重启物理断电清零对于消除会话审计痕迹的降维打击。
+        </p>
+        <div class="journal-card-footer">
+          <span class="journal-read-time">用时约 5 分钟 · 1110 字</span>
+          <a href="ram-only-privacy-architecture.html" class="journal-link-btn">阅读全文 &rarr;</a>
+        </div>
+      </article>
+
+      <!-- 文章 3：科研文献与开源权重加速 -->
+      <article class="journal-card">
+        <div class="journal-card-header">
+          <span class="journal-badge">科研工程</span>
+          <time class="journal-date" datetime="2026-10-12">2026-10-12</time>
+        </div>
+        <h2 class="journal-card-title">
+          <a href="academic-arxiv-huggingface-acceleration.html">科研文献与开源权重下载慢？arXiv与HuggingFace大模型传输提速</a>
+        </h2>
+        <p class="journal-card-excerpt">
+          面向深度学习科研人员，分享如何通过 Git LFS 多线程管道优化、跨国镜像与纯净专线网络，解决几百吉字节大模型权重下载中途断流与校验失败的工程瓶颈。
+        </p>
+        <div class="journal-card-footer">
+          <span class="journal-read-time">用时约 6 分钟 · 1140 字</span>
+          <a href="academic-arxiv-huggingface-acceleration.html" class="journal-link-btn">阅读全文 &rarr;</a>
+        </div>
+      </article>
+
+      <!-- 文章 4：跨洋高丢包链路 BBR/QUIC 调优 -->
+      <article class="journal-card">
+        <div class="journal-card-header">
+          <span class="journal-badge">传输层调优</span>
+          <time class="journal-date" datetime="2026-10-11">2026-10-11</time>
+        </div>
+        <h2 class="journal-card-title">
+          <a href="packet-loss-mitigation-protocols.html">跨洋高丢包链路拯救计划：BBR拥塞控制与QUIC协议调优实操</a>
+        </h2>
+        <p class="journal-card-excerpt">
+          对比基于丢包反馈的传统 TCP Cubic 与基于瓶颈带宽时延乘积（BDP）的 Google BBR v3 算法。手把手配置 FEC 前向纠错，在高丢包链路下挽救 70% 的有效吞吐。
+        </p>
+        <div class="journal-card-footer">
+          <span class="journal-read-time">用时约 5 分钟 · 1120 字</span>
+          <a href="packet-loss-mitigation-protocols.html" class="journal-link-btn">阅读全文 &rarr;</a>
+        </div>
+      </article>
+
+      <!-- 文章 5：DoH / DoT 防泄漏工程实践 -->
+      <article class="journal-card">
+        <div class="journal-card-header">
+          <span class="journal-badge">网络加密</span>
+          <time class="journal-date" datetime="2026-10-10">2026-10-10</time>
+        </div>
+        <h2 class="journal-card-title">
+          <a href="dns-leak-doh-dot-defense.html">防止真实IP与解析泄露：DNS over HTTPS/TLS全链路加密工程实践</a>
+        </h2>
+        <p class="journal-card-excerpt">
+          揭示客户端在多出口环境下因 EDNS Client Subnet（ECS）引发的地理位置定位泄漏。通过本地 stub resolver 与 DoH/DoT 代理链构建严密的防嗅探防篡改解析链条。
+        </p>
+        <div class="journal-card-footer">
+          <span class="journal-read-time">用时约 6 分钟 · 1150 字</span>
+          <a href="dns-leak-doh-dot-defense.html" class="journal-link-btn">阅读全文 &rarr;</a>
+        </div>
+      </article>
+
+      <!-- 文章 6：Sing-box 通用内核实战 -->
+      <article class="journal-card">
+        <div class="journal-card-header">
+          <span class="journal-badge">内核演进</span>
+          <time class="journal-date" datetime="2026-10-09">2026-10-09</time>
+        </div>
+        <h2 class="journal-card-title">
+          <a href="sing-box-nextgen-routing.html">下一代通用代理内核Sing-box实战：规则集路由与极简配置迁移</a>
+        </h2>
+        <p class="journal-card-excerpt">
+          全面解析新一代轻量代理内核 Sing-box 的核心内存架构。演示二进制规则集编译、多路复用 Mux 吞吐优化及与传统客户端配置文件的无痛迁移实践。
+        </p>
+        <div class="journal-card-footer">
+          <span class="journal-read-time">用时约 6 分钟 · 1130 字</span>
+          <a href="sing-box-nextgen-routing.html" class="journal-link-btn">阅读全文 &rarr;</a>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- 页脚 -->
+  <footer class="polar-footer">
+    <div class="polar-layout">
+      <ul class="polar-footer-list">
+        <li><a href="sitemap.html">网站地图</a></li>
+        <li><a href="about.html">关于我们</a></li>
+        <li><a href="terms.html">服务条款</a></li>
+        <li><a href="privacy.html">隐私政策</a></li>
+      </ul>
+      <div class="polar-copy">
+        &copy; 2026 良心云 (Liangxingyun.top). 保留所有权利。
+      </div>
+    </div>
+  </footer>
+  <!-- 移动端导航点击后自动收起微脚本 (原生无依赖) -->
+  <script>
+    document.querySelectorAll('.polar-nav-link').forEach(function(l) {
+      l.addEventListener('click', function() {
+        var t = document.getElementById('polarNavToggle');
+        if (t) t.checked = false;
+      });
+    });
+  </script>
+</body>
+</html>
